@@ -1,4 +1,7 @@
 Public Sub Sortie_BP()
+' Sub TOP level regroupant l'ensemble de l'ajustement
+' Passage du modèle en P90 pour sculpter la Dette
+' PUIS Passage en Productible sélectionné pour ajuster l'IS et obtenir la rentabilité
 
 Debug.Print "-----------------------------------------------"
 Debug.Print "Starting Model"
@@ -23,9 +26,9 @@ Count_SJD = 0
                 
     End If
 
-Debug.Print "-----------------------------------------------"
-Debug.Print "Ending Model"
 Debug.Print ""
+Debug.Print "Ending Model"
+Debug.Print "-----------------------------------------------"
 
 ThisWorkbook.Worksheets("ExecSum").Activate
 Application.StatusBar = False

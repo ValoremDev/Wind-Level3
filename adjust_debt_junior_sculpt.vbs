@@ -1,6 +1,8 @@
 Sub adjust_debt_junior_sculpt()
+' Fixe le montant en Sculpt de la Dette Junior
+' Cette prodédure calcule le montant maximal de dette en sculptant avec un DSCR fixe, 
+' et casse la référence circulaire qui s'applique avec le calcul des intérêts.
 
-'Cette prodédure calcule le montant maximal de dette en sculptant avec un DSCR fixe, et casse la référence circulaire qui s'applique avec le calcul des intérêts.
 Application.StatusBar = "Sculpting Junior Debt"
 Application.ScreenUpdating = False
 

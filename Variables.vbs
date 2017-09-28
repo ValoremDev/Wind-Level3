@@ -8,12 +8,11 @@ Public Type_Amortissement As String         ' Dette sculptée ou K+I
 Public TRI_Renta As Double                  ' TRI visé pour visée tarif
 Public Cas_Scenario As Integer              ' Numéro de scénario actif
 Public TRI_Actionnaire As Double            ' TRI Actionnaire calculé
-Public debugBool As Boolean
-Public debugLoopValue As Integer
-Public debugLoop2Value As Integer
-Public scenario As Integer
-Public CrawlerJson As Object
-Public delta_CAPEX As Object
+Public debugBool As Boolean                 ' Booléen indiquant l'utilisation ou non du mode débug
+Public debugLoopValue As Integer            ' Numéro de loop du Crawler
+Public scenario As Integer                  ' Placeholder du scenario
+Public CrawlerJson As Object                ' Objet ayant pour but de contenir le JSON du Crawler Debugger
+Public delta_CAPEX As Object                ' Placeholder du range marge d'Input pour évolution dasn Debugger
 
 
 ' PRIVATE VARIABLES
@@ -23,7 +22,8 @@ Private step_Tarif As Double                ' Step appliqué au tarif lors de la
 
 
 '=======================================================================================================
-'DEFINITION DES CONSTANTES GLOBALES
+' DEFINITION DES CONSTANTES GLOBALES
+' /!\ Noms des Constantes en MAJUSCULES /!\
 '=======================================================================================================
 
 ' On fixe le pas avec lequel on fait varier le DSCR en cas de gearing trop élevé à 0.01 (standard)
@@ -48,7 +48,8 @@ Public Const MSECONDS = 0.000000011574
 
 
 '=======================================================================================================
-'DEFINITION DES ELEMENTS EXTERNES
+' DEFINITION DES ELEMENTS EXTERNES
+' LIBRAIRIES ANNEXES SI BESOIN
 '=======================================================================================================
 'VBA-JSON : https://github.com/VBA-tools/VBA-JSON
 'VBA-Dictionary : https://github.com/VBA-tools/VBA-Dictionary

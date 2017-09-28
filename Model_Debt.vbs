@@ -1,6 +1,5 @@
 Sub Model_Debt()
-
-'Application.ScreenUpdating = False
+' Sub faisant la distinction entre les deux méthodes de sculptage de dette
 
 Type_Amortissement = Range("Type_Amo").Value
 Application.StatusBar = "Running Model..."

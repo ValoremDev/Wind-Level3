@@ -1,16 +1,11 @@
 Sub adjust_debt_constant()
+' Calcul de la quantité de dette levable en cas de sculptage en K+I constant avec respect d'un DSCR minimum
 
 'On vide la ligne de cash sweep paste afin d'aviter tout problème de sizing
 Application.StatusBar = "Adjusting Constant Senior Debt"
 Range("cash_sweep_paste").ClearContents
 
-'Cette prodédure calcule le montant maximal de dette à K+I constant que l'on peut tirer en respectant un DSCR minimum
 Do
-
-    #If Debugging_SD Then
-        Stop
-    #End If
-
     Range("DSCR_target").GoalSeek Goal:=Range("DSCR_const").Value, ChangingCell:=Range("Dette_const")
     Call break_circular_reference_IS
 

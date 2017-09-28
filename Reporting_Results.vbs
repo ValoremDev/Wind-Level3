@@ -1,4 +1,5 @@
 Sub Reporting_Results()
+' Reporte les résultats des 3 scénarios de Productible (P90 -> P50) dans l'onglet "Slide COMEC"
 
 Dim loopVal As Integer: loopVal = 3
 Application.ScreenUpdating = False

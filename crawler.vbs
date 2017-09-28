@@ -1,31 +1,38 @@
 Sub crawler(ByVal BoxStep, ByVal Boxiter)
     '---------------------------------------------------
-    ' Crawl sur le Xème scénario afin de tester le modèle et les différentes configurations / tournicoti
+    '  Crawl sur le Xème scénario afin de tester le modèle et les différentes configurations
+    ' :BoxStep: Provient du Form Debug/Test -> Step up / down à appliquer à chaque itération sur la Marge
+    ' :Boxiter: Provient du Form Debug/Test -> Nombre d'itérations à effectuer. Répartie 50/50 entre montant et descendant
     '---------------------------------------------------
     
     Dim CurrDir As String: CurrDir = ActiveWorkbook.Path
     
     Dim logFile As Object
     Dim fso As Object
+    Set CrawlerJson = JsonConverter.ParseJson("{}")
 
-    debugBool = True
     scenario = Range("Cas_Scenario").Value
     Set delta_CAPEX = Range("delta_CAPEX").Offset(0, 1 - scenario)
     initial = delta_CAPEX.Value
     
+    Set fso = CreateObject("Scripting.FileSystemObject")
+    Dim file As String: file = CurrDir & "\" & Format(Date, "yyyy-mm-dd") & " - Log.txt"
+
+    Set logFile = UseOverwriteFile(file)
+    
+    Dim scenarioName As String: scenarioName = Range("scenario_Name").Offset(0, 1 - scenario).Value
+
     step = BoxStep
-    
-    Set CrawlerJson = JsonConverter.ParseJson("{}")
-    
+    debugBool = True
+
     Debug.Print "-------------------------"
-    Debug.Print "Running DEBUG MODE"
+    Debug.Print "Running DEBUG modèle"
     Debug.Print "-------------------------"
     
     For i = 1 To Boxiter / 2
         debugLoopValue = i
         delta_CAPEX.Value = delta_CAPEX.Value + step
         Call Sortie_BP
-
     Next
     
     delta_CAPEX.Value = initial
@@ -34,18 +41,10 @@ Sub crawler(ByVal BoxStep, ByVal Boxiter)
         debugLoopValue = i
         delta_CAPEX.Value = delta_CAPEX.Value - step
         Call Sortie_BP
-
     Next
     
     delta_CAPEX.Value = initial
 
-    Set fso = CreateObject("Scripting.FileSystemObject")
-    Dim file As String: file = CurrDir & "\" & Format(Date, "yyyy-mm-dd") & " - Log.txt"
-    
-    Set logFile = UseOverwriteFile(file)
-    
-    Dim scenarioName As String: scenarioName = Range("scenario_Name").Offset(0, 1 - scenario).Value
-    
     logFile.WriteLine scenarioName & " - " & Now & " - Logger"
     logFile.WriteLine "Exit Code - " & "Delta CAPEX - " & "DSCR Calc - " & "Gearing Calc"
     logFile.WriteLine "--------------------------------------------------------"
@@ -62,7 +61,6 @@ Sub crawler(ByVal BoxStep, ByVal Boxiter)
     Debug.Print "-------------------------"
     Debug.Print "ENDING DEBUG MODE"
     Debug.Print "-------------------------"
-    
 End Sub
 
 

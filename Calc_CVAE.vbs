@@ -1,5 +1,6 @@
 Function Calc_CVAE(ChiffreAffaire As Double)
-
+' :ChiffreAffaire: Le chiffre d'affaire annuel
+' Retourne la valeur de la base de CVAE en fonction de l'entrée
 'Calcul de la CVAE selon les dispositions fiscales en vigueur en 2017 en France
     
     If ChiffreAffaire < 500 Then

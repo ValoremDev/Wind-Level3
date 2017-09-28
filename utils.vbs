@@ -1,9 +1,12 @@
 Function FileThere(FileName As String) As Boolean
+' Vérifie si le fichier est présent dans le dossier actuel
+' Renvoie Booléen
+' :FileName: str Only the file name
     FileThere = (Dir(FileName) > "")
 End Function
 
 Function UseOverwriteFile(FileName As String)
-' Use or Overwrite a file in same directory
+' Prompts the user to Creat, Use (Append) or Overwrite a file in same directory
 ' :fileName: Complete path to file
    Set fso = CreateObject("Scripting.FileSystemObject")
    
@@ -16,6 +19,5 @@ Function UseOverwriteFile(FileName As String)
     Else
         Set UseOverwriteFile = fso.CreateTextFile(FileName, True)
     End If
-
 
 End Function

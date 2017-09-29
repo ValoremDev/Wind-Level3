@@ -1,3 +1,5 @@
+'LIEN GITHUB: https://github.com/ValoremDev/Wind-Level3
+
 '=======================================================================================================
 'DEFINITION DES VARIABLES GLOBALES
 '=======================================================================================================
@@ -56,3 +58,4 @@ Public Const MSECONDS = 0.000000011574
 'Permet d'éviter Windows Scripting Runtime
 
 Public Const xRef As String = "C:\WINDOWS\System32\scrrun.dll"  'Référence au Microsoft Scripting Runtime
+
